@@ -10,11 +10,10 @@ const Body = styled.nav`
     height: 50px;
   }
   h5 {
-    margin-top: 25px;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 17px;
-    text-decoration-line: underline;
+    margin-top: 32px;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 18px;
     color: #ffffff;
   }
 `;

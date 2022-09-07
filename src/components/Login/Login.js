@@ -1,18 +1,50 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import { AuthContext } from "../../providers/auth";
-// import axios from "axios";
+import { AuthContext } from "../../providers/auth";
+import axios from "axios";
 import { ThreeDots } from "react-loader-spinner";
 import logo from "../../assets/MyWallet.svg";
 import { Body, Form, Button } from "../../styles/loginStyle";
 
 function Login() {
+  const {setDados} = React.useContext(AuthContext); 
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  
+  function handForm(e) {
+    if (!loading) {
+      setLoading(true);
+      e.preventDefault();
+      const body = {
+        email,
+        password,
+      };
 
-  function handForm() {}
+      const promise = axios.post(
+        `https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login`,
+        body
+      );
+
+      promise.then((res) => {
+        setDados(res.data);
+        navigate(`../hoje`);
+        setEmail("");
+        setPassword("");
+        setLoading(false);
+      });
+
+      promise.catch((err) => {
+        const message = err.response.statusText;
+        alert(message);
+        setEmail("");
+        setPassword("");
+        setLoading(false);
+      });
+    }
+
+  }
 
   return (
     <Body>
@@ -29,10 +61,10 @@ function Login() {
         />
         <input
           type="password"
+          placeholder="senha"
           onChange={(e) => {
             setPassword(e.target.value);
           }}
-          placeholder="senha"
           value={password}
           required
         />
