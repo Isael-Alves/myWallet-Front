@@ -29,7 +29,7 @@ function Login() {
 
       promise.then((res) => {
         setDados(res.data);
-        navigate(`../hoje`);
+        navigate(`../cashFlow`);
         setEmail("");
         setPassword("");
         setLoading(false);

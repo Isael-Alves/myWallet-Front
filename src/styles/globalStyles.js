@@ -56,8 +56,8 @@ a {
   box-sizing: border-box;
 }
 body {
-	font-family: 'Raleway', sans-serif;
-  color: #293845;
+  font-family: 'Raleway', sans-serif;
+  color: #000000;
   background-color: #8C11BE;
 }
 `;

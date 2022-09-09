@@ -31,11 +31,12 @@ const Form = styled.form`
     background: #ffffff;
     border: 1px solid #d5d5d5;
     border-radius: 5px;
+
     ::placeholder {
+      font-style: normal;
       font-weight: 400;
       font-size: 20px;
       line-height: 23px;
-      color: #000000;
     }
   }
 `;
@@ -43,10 +44,11 @@ const Form = styled.form`
 const Button = styled.button`
   width: 326px;
   height: 46px;
+  margin-top: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 400;
+  font-weight: 700;
   font-size: 21px;
   line-height: 26px;
   border: none;
