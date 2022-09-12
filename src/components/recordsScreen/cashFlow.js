@@ -1,11 +1,15 @@
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 import { RiLogoutBoxRLine } from "react-icons/ri";
 import { MdAddCircleOutline } from "react-icons/md";
 import { IoMdRemoveCircleOutline } from "react-icons/io";
-import { useState } from "react";
+import React, { useState } from "react";
 
 function CashFlow() {
+  const dados = JSON.parse(localStorage.getItem("dados"));
+  const navigate = useNavigate();
   const [empty, setEmpty] = useState(true);
+  const { name, token } = dados;
 
   function listCashFlow() {
     return "lista";
@@ -14,18 +18,18 @@ function CashFlow() {
   return (
     <Body>
       <Header>
-        <h1>Olá, Fulano</h1>
+        <h1>Olá, {name}</h1>
         <RiLogoutBoxRLine />
       </Header>
       <Box>
         {empty ? <h3>Não há registros de entrada ou saída</h3> : listCashFlow()}
       </Box>
       <BoxButtons>
-        <div>
+        <div onClick={()=> navigate('../cashIn')}>
           <MdAddCircleOutline />
           <h2>Nova entrada</h2>
         </div>
-        <div>
+        <div onClick={()=> navigate('../cashOut')}>
           <IoMdRemoveCircleOutline />
           <h2>Nova entrada</h2>
         </div>

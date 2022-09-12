@@ -12,7 +12,7 @@ function Registration() {
     email: "",
     password: "",
     name: "",
-    confirmPassword: "",
+    repeat_password: "",
   };
   const [form, setForm] = useState(clearForm);
 
@@ -24,38 +24,39 @@ function Registration() {
   }
 
   function sendForm(e) {
-    if (!loading && form.password === form.confirmPassword) {
+    if (!loading && form.password === form.repeat_password) {
       e.preventDefault();
       setLoading(true);
       const body = {
         ...form,
       };
 
-      const promise = axios.post(
-        `https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/sign-up`,
-        body
-      );
+       const promise = axios.post(
+         `http://localhost:5000/sign-up`,
+         body
+       );
 
-      promise.then((res) => {
-        alert("Usuário criado com sucesso!");
-        navigate(`../`);
-        setForm(clearForm);
-        setLoading(false);
-      });
+       promise.then((res) => {
+         alert("Usuário criado com sucesso!");
+         navigate(`../`);
+         setForm(clearForm);
+         setLoading(false);
+       });
 
-      promise.catch((err) => {
-        const message = err.response.statusText;
-        alert(message);
-        setForm(clearForm);
-        setLoading(false);
-      });
+       promise.catch((err) => {
+         const message = err.response.statusText;
+         alert(message);
+         setForm(clearForm);
+         setLoading(false);
+       });
+      return;
     }
     alert("Confirme a senha");
   }
 
   return (
     <Body>
-      <img src={logo} alt="Logo" style={{ marginTop: "200px" }} />
+      <img src={logo} alt="Logo" />
       <Form onSubmit={sendForm}>
         <input
           type="text"
@@ -84,10 +85,10 @@ function Registration() {
         <input
           type="password"
           alt=""
-          name="confirmPassword"
+          name="repeat_password"
           placeholder="Confirme a senha"
           onChange={handleForm}
-          value={form.confirmPassword}
+          value={form.repeat_password}
           required
         />
         <Button>

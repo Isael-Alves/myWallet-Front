@@ -5,7 +5,7 @@ const Body = styled.nav`
   flex-direction: column;
   align-items: center;
   img {
-    margin-top: 68px;
+    margin-top: 100px;
     width: 180px;
     height: 50px;
   }

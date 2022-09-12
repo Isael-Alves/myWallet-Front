@@ -23,12 +23,13 @@ function Login() {
       };
 
       const promise = axios.post(
-        `https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login`,
+        `http://localhost:5000/sign-in`,
         body
       );
 
       promise.then((res) => {
         setDados(res.data);
+        window.localStorage.setItem("dados", JSON.stringify(res.data));      
         navigate(`../cashFlow`);
         setEmail("");
         setPassword("");
@@ -48,7 +49,7 @@ function Login() {
 
   return (
     <Body>
-      <img src={logo} alt="Logo" style={{ marginTop: "250px" }} />
+      <img src={logo} alt="Logo" style={{ marginTop: "175px" }} />
       <Form onSubmit={handForm}>
         <input
           type="email"
