@@ -25,11 +25,11 @@ function CashFlow() {
         {empty ? <h3>Não há registros de entrada ou saída</h3> : listCashFlow()}
       </Box>
       <BoxButtons>
-        <div onClick={()=> navigate('../cashIn')}>
+        <div onClick={() => navigate("../cashIn")}>
           <MdAddCircleOutline />
           <h2>Nova entrada</h2>
         </div>
-        <div onClick={()=> navigate('../cashOut')}>
+        <div onClick={() => navigate("../cashOut")}>
           <IoMdRemoveCircleOutline />
           <h2>Nova entrada</h2>
         </div>
